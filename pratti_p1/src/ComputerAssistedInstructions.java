@@ -5,9 +5,9 @@ public class ComputerAssistedInstructions {
 
     Scanner scnr = new Scanner(System.in);
 
-    public static int multiplicationAr() {
+    public static double multiplicationAr() {
 
-        int num1, num2;
+        double num1, num2;
 
         SecureRandom randomNumber = new SecureRandom();
         num1 = randomNumber.nextInt(10) + 1;
@@ -16,9 +16,11 @@ public class ComputerAssistedInstructions {
         System.out.println("How much is "+ num1 + " times " + num2 + "?");
 
         return num1 * num2;
+
+
     }
-    public static int additionAr() {
-        int num1, num2;
+    public static double additionAr() {
+        double num1, num2;
 
         SecureRandom randomNumber = new SecureRandom();
         num1 = randomNumber.nextInt(10) + 1;
@@ -39,7 +41,6 @@ public class ComputerAssistedInstructions {
 
         return num1 - num2;
     }
-
     public static int divisionAr() {
 
         int num1, num2;
@@ -53,7 +54,6 @@ public class ComputerAssistedInstructions {
         return num1 / num2;
 
     }
-
     public static int mixedAr() {
 
         SecureRandom randomNumber = new SecureRandom();
@@ -97,6 +97,32 @@ public class ComputerAssistedInstructions {
         } */
         return number;
     }
+
+    public double digits(int difficulty) {
+        SecureRandom randomNumber = new SecureRandom();
+
+        double num1, num2;
+         if(difficulty == 1) {
+             num1 = randomNumber.nextInt(10) + 1;
+             num2 = randomNumber.nextInt(10) + 1;
+         } else if(difficulty == 2) {
+             num1 = randomNumber.nextInt(99) + 10;
+             num2 = randomNumber.nextInt(99) + 10;
+         } else if (difficulty == 3) {
+             num1 = randomNumber.nextInt(999) + 100;
+             num2 = randomNumber.nextInt(999) + 100;
+         } else if(difficulty == 4) {
+             num1 = randomNumber.nextInt(9999) + 1000;
+             num2 = randomNumber.nextInt(9999) + 1000;
+         }
+
+         double[] numbersArray = new double[2];
+         numbersArray[0] = num1;
+         numbersArray[1] = num2;
+
+         return numbersArray[] ;
+
+    }
     public static int doubleDigits() {
         int num1, num2;
 
@@ -108,7 +134,6 @@ public class ComputerAssistedInstructions {
 
         return num1 * num2;
     }
-
     public static int tripleDigits() {
         int num1, num2;
 
@@ -120,7 +145,6 @@ public class ComputerAssistedInstructions {
 
         return num1 * num2;
     }
-
     public static int fourDigits() {
         int num1, num2;
 
@@ -133,6 +157,22 @@ public class ComputerAssistedInstructions {
         return num1 * num2;
     }
 
+    public int generateQuestions(int difficulty, int questionType) {
+        switch(difficulty) {
+            case 1:
+                //regular digits;
+                break;
+            case 2:
+                doubleDigits();
+                break;
+            case 3:
+                tripleDigits();
+                break;
+            case 4:
+                fourDigits();
+                break;
+        }
+    }
     public static int CorrectAnswer() {
         SecureRandom randomNumber = new SecureRandom();
         int choice;
@@ -155,7 +195,6 @@ public class ComputerAssistedInstructions {
         }
         return choice;
     }
-
     public static int wrongAnswer() {
         SecureRandom randomNumber = new SecureRandom();
         int choice = randomNumber.nextInt(4);
@@ -177,9 +216,7 @@ public class ComputerAssistedInstructions {
         }
         return choice;
     }
-
-
-    public static int AllQuestions() {
+  /*  public static int AllQuestions() {
         int displayQuestion = 0;
         int[] generateQuestions = new int[10];
 
@@ -189,7 +226,6 @@ public class ComputerAssistedInstructions {
         }
         return displayQuestion;
     }
-
     public static int findMatching(int[] a, int[] b) {
         int count = 0;
 
@@ -201,11 +237,8 @@ public class ComputerAssistedInstructions {
         System.out.println("it worked!");
         return count;
     }
-
     public double EverythingWeNeed() {
-        // Generating 10 questions at once
-
-
+        // Generating 10 questions at once9807
         int[] generateQuestions = new int[10];
 
         for(int i = 0; i<generateQuestions.length; i++){
@@ -218,7 +251,6 @@ public class ComputerAssistedInstructions {
             userInput[i] = scnr.nextInt();
             //System.out.println("so far so good");
         }
-
         //counting number of correct responses
         int count = 0;
         int j;
@@ -232,48 +264,51 @@ public class ComputerAssistedInstructions {
         userResult = userResult /10 * 100;
         return userResult;
     }
+    */
 
-
-
-    public static void main(String[] args) {
+    public  void main(String[] args) {
         ComputerAssistedInstructions cs = new ComputerAssistedInstructions(); // to access scanner!
         Scanner sc = cs.scnr;
+        // let user pick difficulty
 
-        // Let user pick
+        System.out.println("Enter a difficulty level[1 - 2 - 3 - 4]");
+        int userDiff = sc.nextInt();
+        digits(userDiff);
+        // Let user pick question type
         System.out.println("Pick a type of Arithmetic problem you would like to study:");
         System.out.println("[1] Addition");
         System.out.println("[2] Multiplication");
         System.out.println("[3] Subtraction");
         System.out.println("[4] Division");
         System.out.println("[5] Mixed");
-        int userInput = sc.nextInt();
+        int userQtType = sc.nextInt();
 
-        switch(userInput) {
+        switch(userQtType) {
             case 1:
                 System.out.println("You picked Addition\n");
                 additionAr();
-                userInput = sc.nextInt();
+                userQtType = sc.nextInt();
                 break;
             case 2:
                 System.out.println("You picked Multiplication\n");
                 multiplicationAr();
-                userInput = sc.nextInt();
+                userQtType = sc.nextInt();
 
                 break;
             case 3:
                 System.out.println("You picked Subtraction\n");
                 subtractionAr();
-                userInput = sc.nextInt();
+                userQtType = sc.nextInt();
                 break;
             case 4:
                 System.out.println("You picked Division\n");
                 divisionAr();
-                userInput = sc.nextInt();
+                userQtType = sc.nextInt();
                 break;
             case 5:
                 System.out.println("You picked mixed\n");
                 mixedAr();
-                userInput = sc.nextInt();
+                userQtType = sc.nextInt();
                 break;
         }
 
