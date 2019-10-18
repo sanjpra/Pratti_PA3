@@ -1,4 +1,6 @@
 import java.util.Scanner;
+// Sanjana Pratti
+
 
 public class SavingsAccount {
     static private double annualInterestRate;
