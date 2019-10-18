@@ -1,22 +1,13 @@
 import com.sun.source.tree.CompilationUnitTree;
 
+// Sanjana Pratti
 import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class ComputerAssistedInstructions {
 
-    /*
-    int[] math = new int[] { 1, 2, 3, 4, 5};
-    int[] diffic = new int[] {1,2,3,4};
-    int[][] randomNums = new int[10][2];
-
-    */
-    public static boolean repeat = false;
-
     public static int[][] numbers = new int[10][2];
     public static int[] answers = new int[10];
-
-
 
     Scanner scnr = new Scanner(System.in);
 
@@ -27,8 +18,6 @@ public class ComputerAssistedInstructions {
         int multiplication, addition, subtraction, division;
         int num1 = 0;
         int num2 = 0;
-        int[][] numbers = new int[10][2];
-        int[] answers = new int[10];
 
         for(int i = 0; i<10; i++){
             if(difficulty == 1) {
@@ -75,10 +64,71 @@ public class ComputerAssistedInstructions {
                 division = num1 / num2;
                 System.out.println("How much is " + num1 + " divided by " + num2 + "?");
                 ComputerAssistedInstructions.answers[i]  = division;
+            }else if(questionType == 5) {
+                mixedArithmetic(difficulty);
             }
         }
 
           return printThisPls; // This is important
+
+    }
+
+    public static int mixedArithmetic(int difficulty) {
+
+        SecureRandom randomNumber = new SecureRandom();
+        ComputerAssistedInstructions cs = new ComputerAssistedInstructions();
+
+        int num1 = 0;
+        int num2 = 0;
+
+        for(int i = 0; i<10; i++) {
+            if (difficulty == 1) {
+                num1 = randomNumber.nextInt(8) + 1;
+                num2 = randomNumber.nextInt(8) + 1;
+            } else if (difficulty == 2) {
+                num1 = randomNumber.nextInt(89) + 10;
+                num2 = randomNumber.nextInt(89) + 10;
+            } else if (difficulty == 3) {
+                num1 = randomNumber.nextInt(899) + 100;
+                num2 = randomNumber.nextInt(899) + 100;
+            } else if (difficulty == 4) {
+                num1 = randomNumber.nextInt(8999) + 1000;
+                num2 = randomNumber.nextInt(8999) + 1000;
+            }
+
+            ComputerAssistedInstructions.numbers[i][0] = num1;
+            ComputerAssistedInstructions.numbers[i][1] = num2;
+        }
+        int[] array = new int[4];
+        array[0] = num1 * num2;
+        array[1] = num1 + num2;
+        array[2] = num1 - num2;
+        array[3] = num1 / num2;
+
+        int mixedNum = randomNumber.nextInt(4);
+
+        if(mixedNum == 0) {
+            System.out.println("How much is " + num1 + " times " + num2 + "?");
+            return array[0];
+        }
+
+        else if(mixedNum == 1) {
+            System.out.println("How much is " + num1 + " plus " + num2 + "?");
+            return array[1];
+        }
+
+        else if(mixedNum == 2) {
+            System.out.println("How much is " + num1 + " minus " + num2 + "?");
+            return array[2];
+        }
+
+        else if(mixedNum == 3) {
+            System.out.println("How much is " + num1 + " divided by " + num2 + "?");
+            return array[3];
+        }
+
+        return mixedNum;
+
 
     }
 
@@ -104,6 +154,7 @@ public class ComputerAssistedInstructions {
         }
         return choice;
     }
+
     public static int wrongAnswer() {
         SecureRandom randomNumber = new SecureRandom();
         int choice = randomNumber.nextInt(4);
@@ -172,6 +223,7 @@ public class ComputerAssistedInstructions {
       return grade;
 
   }
+
     public static void main(String[] args) {
         ComputerAssistedInstructions cs = new ComputerAssistedInstructions(); // to access scanner!
         Scanner sc = cs.scnr;
@@ -236,4 +288,6 @@ public class ComputerAssistedInstructions {
             Everything();
         }
     }
+
 }
+// Sanjana Pratti
